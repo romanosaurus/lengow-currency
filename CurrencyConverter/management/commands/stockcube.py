@@ -4,6 +4,7 @@ from xml.etree import ElementTree
 from django.core.management.base import BaseCommand, CommandError
 from CurrencyConverter.models import Cube
 
+
 class Command(BaseCommand):
     url = 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'
     help = 'Stock the current EUR conversions from this URL: ' + url
@@ -14,7 +15,6 @@ class Command(BaseCommand):
             if 'Cube' in elem.tag:
                 return elem[0]
         return None
-
 
     def handle(self, *args, **options):
         response = requests.get(self.url).content

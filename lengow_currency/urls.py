@@ -14,11 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
-from rest_framework import routers
-from CurrencyConverter.views import MoneyConvertView
+from django.urls import path
+from CurrencyConverter.views import money_convert_view
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    path(r'money/convert/', MoneyConvertView),
+    path(r'money/convert/', money_convert_view),
 ]

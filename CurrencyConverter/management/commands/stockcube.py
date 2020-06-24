@@ -9,6 +9,9 @@ class Command(BaseCommand):
     url = 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'
     help = 'Stock the current EUR conversions from this URL: ' + url
 
+    """
+    Function to get the cube list inside the xml file
+    """
     @staticmethod
     def __get_cube_list(tree):
         for elem in tree:
@@ -16,6 +19,9 @@ class Command(BaseCommand):
                 return elem[0]
         return None
 
+    """
+    Logic of the command
+    """
     def handle(self, *args, **options):
         response = requests.get(self.url).content
         tree = ElementTree.fromstring(response)
